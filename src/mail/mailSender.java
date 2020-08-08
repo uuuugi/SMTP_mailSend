@@ -19,21 +19,16 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
  
 public class mailSender {
-  public static void main(String args[]) {
-    sendMail();
-  }
-  
-  /**
-   * SendMail
-   */
-  public static void sendMail() {
-    // 메일 인코딩
+
+  public static boolean sendMail(String userEmail) {
+    boolean result = false;
+	// 메일 인코딩
     final String bodyEncoding = "UTF-8"; //콘텐츠 인코딩
     
-    String subject = "메일 발송 테스트";// 제목
-    String fromEmail = "email@gamil.com";//보내는 주소
+    String subject = "제목";// 제목
+    String fromEmail = "보내는 주소";//보내는 주소
     String fromUsername = "java mailSend tester";// 보내는이 이릅
-    String toEmail = "email@naver.com"; // 받는 주소
+    String toEmail = userEmail; // 받는 주소
     
     final String username = "id@gmail.com";   // gmail id      
     final String password = "pw"; // gmail pw
@@ -41,7 +36,8 @@ public class mailSender {
     // 메일에 출력할 텍스트
     StringBuffer sb = new StringBuffer();
     sb.append("<h3>Hello</h3>\n");
-    sb.append("<h4>this is test mail</h4>\n");    
+    sb.append("<h4>this is test mail</h4>\n");  
+    
     String html = sb.toString();
     
     // 메일 옵션 설정
@@ -97,9 +93,10 @@ public class mailSender {
  
       // 메일 발송
       Transport.send( message );
-      
+      result = true;
     } catch ( Exception e ) {
       e.printStackTrace();
     }
+    return result;
   }
 }
