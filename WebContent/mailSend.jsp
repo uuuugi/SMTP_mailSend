@@ -12,7 +12,7 @@
 	request.setCharacterEncoding("utf-8");
 	String userEmail = (String) request.getParameter("Email");
 	
-	boolean result = mailSender.sendMail(userEmail);
+	boolean result = mailSender.sendMail(userEmail, "id1");
 	
 	if(result)
 		out.print("발송 완료");

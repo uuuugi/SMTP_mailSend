@@ -20,23 +20,25 @@ import javax.mail.internet.MimeUtility;
  
 public class mailSender {
 
-  public static boolean sendMail(String userEmail) {
+  public static boolean sendMail(String userEmail, String id) {
     boolean result = false;
 	// 메일 인코딩
     final String bodyEncoding = "UTF-8"; //콘텐츠 인코딩
     
     String subject = "제목";// 제목
-    String fromEmail = "보내는 주소";//보내는 주소
+    String fromEmail = "hhjjkk7186@gamil.com";//보내는 주소
     String fromUsername = "java mailSend tester";// 보내는이 이릅
     String toEmail = userEmail; // 받는 주소
     
-    final String username = "id@gmail.com";   // gmail id      
-    final String password = "pw"; // gmail pw
+    final String username = "hhjjkk7186@gmail.com";   // gmail id      
+    final String password = "159uk0405"; // gmail pw
     
     // 메일에 출력할 텍스트
+    String url="http://localhost:8080/se_editor/changePwForm.jsp?id="+id;
     StringBuffer sb = new StringBuffer();
-    sb.append("<h3>Hello</h3>\n");
-    sb.append("<h4>this is test mail</h4>\n");  
+    sb.append("<h3>SE_HOMEPAGE입니다.</h3>\n");
+    sb.append("<h4>아래의 링크로 이동하여 비밀번호를 변경해주세요</h4>\n");
+    sb.append(url);
     
     String html = sb.toString();
     
